@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño Lógico</title> 
+</head>
+<body>
+    <h1 style="font-family: Verdana; text-align: center; font-weight: 400; margin-top: 3rem;">Jurados</h1>
+    <div style="width: 40vw; display: flex; flex-wrap: nowrap; justify-content: center; padding: 3rem; margin: 2rem auto; background: rgb(208, 219, 231)">
+        <form>
+            <div style="display: inline-block; padding: 0 3rem;">
+                <label for="juradoA">Jurado A</label>
+                <input type="checkbox" name="juradoA">
+            </div>
+    
+            <div style="display: inline-block; padding: 0 3rem;">
+                <label for="juradoB">Jurado B</label>
+                <input type="checkbox" name="juradoB">
+            </div>
+    
+            <div style="display: inline-block; padding: 0 3rem;">
+                <label for="juradoC">Jurado C</label>
+                <input type="checkbox" name="juradoC">
+            </div>
+            <div style="text-align:center; margin-top: 3rem;">
+                <button id="btn" style="color: #fff; border: none; padding: 10px 15px; background: rgb(138, 127, 238);">Calcular</button>
+            </div>
+            
+        </form>
+    </div>
+    <p id="texto" style="text-align:center; font-size: 2rem;"></p>
+
+    <script>
+        let button = document.getElementById('btn')
+        let texto = document.getElementById('texto')
+        let inputs = document.getElementsByTagName('input')
+
+        button.addEventListener('click', (e) => {
+            texto.innerHTML = ""
+            array = []
+            e.preventDefault()
+            calcularGanador()
+            if(array.length < 2) {
+                texto.innerHTML = "El concursante no paso :("
+                texto.style.color = "red"
+            } else {
+                texto.innerHTML = "¡¡¡Ganador!!!"
+                texto.style.color = "green"
+            }
+        })
+
+
+        function calcularGanador(){
+            for(i = 0; i < 3; i++){
+                if(inputs[i].checked) {
+                    array.push(i)
+                }
+            }
+        }
+    </script>
+</body>
+</html>
